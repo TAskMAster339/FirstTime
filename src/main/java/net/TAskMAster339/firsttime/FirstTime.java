@@ -1,6 +1,7 @@
 package net.TAskMAster339.firsttime;
 
 import com.mojang.logging.LogUtils;
+import net.TAskMAster339.firsttime.ModItems.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,14 +12,15 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(TestMod.MOD_ID)
-public class TestMod {
+@Mod(FirstTime.MOD_ID)
+public class FirstTime {
     public static final String MOD_ID = "firsttime";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public TestMod() {
+    public FirstTime() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
