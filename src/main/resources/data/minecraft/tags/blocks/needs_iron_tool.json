@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "firsttime:sapphire_block",
+    "firsttime:sapphire_ore_block",
+    "firsttime:sapphire_deep_ore_block"
+  ]
+}

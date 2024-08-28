@@ -25,17 +25,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> SAPPHIRE_BLOCK = registerBlock("sapphire_block",
             () -> new Block(BlockBehaviour.Properties
                     .of(Material.AMETHYST)
-                    .strength(0.1f)
+                    .strength(1f)
                     .requiresCorrectToolForDrops()), ModCreativeModeTab.FIRST_TIME_TAB);
     public static final RegistryObject<Block> SAPPHIRE_ORE_BLOCK = registerBlock("sapphire_ore_block",
             () -> new Block(BlockBehaviour.Properties
                     .of(Material.STONE)
-                    .strength(0.5f)
+                    .strength(2f)
                     .requiresCorrectToolForDrops()), ModCreativeModeTab.FIRST_TIME_TAB);
     public static final RegistryObject<Block> SAPPHIRE_DEEP_ORE_BLOCK = registerBlock("sapphire_deep_ore_block",
             () -> new Block(BlockBehaviour.Properties
                     .of(Material.STONE)
-                    .strength(0.7f)
+                    .strength(2.5f)
                     .requiresCorrectToolForDrops()), ModCreativeModeTab.FIRST_TIME_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
