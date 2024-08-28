@@ -1,6 +1,7 @@
 package net.TAskMAster339.firsttime;
 
 import com.mojang.logging.LogUtils;
+import net.TAskMAster339.firsttime.block.ModBlocks;
 import net.TAskMAster339.firsttime.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,6 +22,7 @@ public class FirstTime {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);

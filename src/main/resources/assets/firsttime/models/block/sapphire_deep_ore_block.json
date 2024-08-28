@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "firsttime:block/sapphire_deep_ore_block"
+  }
+}

@@ -1,5 +1,9 @@
 {
   "item.firsttime.sapphire": "Sapphire",
 
+  "block.firsttime.sapphire_block": "Block of sapphire",
+  "block.firsttime.sapphire_ore_block": "Sapphire ore",
+  "block.firsttime.sapphire_deep_ore_block": "Deepslate sapphire ore",
+
   "itemGroup.firsttimetab": "First Time"
 }
