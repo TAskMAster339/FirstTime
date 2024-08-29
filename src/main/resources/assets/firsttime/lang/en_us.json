@@ -1,5 +1,9 @@
 {
   "item.firsttime.sapphire": "Sapphire",
+  "item.firsttime.sapphire_pickaxe": "Sapphire pickaxe",
+  "item.firsttime.sapphire_multi_tool": "Sapphire multitool",
+  "item.firsttime.sapphire_axe": "Sapphire axe",
+  "item.firsttime.sapphire_shovel": "Sapphire shovel",
 
   "block.firsttime.sapphire_block": "Block of sapphire",
   "block.firsttime.sapphire_ore_block": "Sapphire ore",

@@ -1,5 +1,5 @@
 # TODO
- - [ ] Make sapphire block
- - [ ] Make sapphire ore
+ - [x] Make sapphire block
+ - [x] Make sapphire ore
  - [ ] Make sapphire items and armor
  - [ ] 
