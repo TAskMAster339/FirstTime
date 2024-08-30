@@ -24,4 +24,13 @@ public class CustomTier {
                     4.0F,
                     0.2F,
                     () -> { return Ingredient.of(ModItems.SAPPHIRE.get());});
+    public static final MaterialArmor NIGHT_VISION_MASK =
+            new MaterialArmor("night",
+                    5,
+                    new int[]{1, 1, 1, 1},
+                    4,
+                    SoundEvents.ARMOR_EQUIP_TURTLE,
+                    0.0F,
+                    0.0F,
+                    () -> { return Ingredient.of(ModItems.SAPPHIRE.get());});
 }

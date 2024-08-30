@@ -1,4 +1,5 @@
 # TODO
- - [ ] NigtVision glass
+ - [ ] Invisible coat
+ - [ ] fast boots
  - [ ] Ore generation
  - [ ] 
