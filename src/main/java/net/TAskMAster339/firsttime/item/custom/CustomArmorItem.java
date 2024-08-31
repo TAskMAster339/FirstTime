@@ -24,9 +24,16 @@ public class CustomArmorItem extends ArmorItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack itemStack, @Nullable Level level, @NotNull List<Component> components, @NotNull TooltipFlag tooltipFlag) {
+        String tmp = "";
         components.add(Component.literal("Press Shift for more info").withStyle(ChatFormatting.GOLD));
         if (Screen.hasShiftDown()) {
-            components.add(Component.literal(TIP).withStyle(ChatFormatting.YELLOW));
+            tmp = TIP;
         }
+        else{
+            tmp = "";
+        }
+        components.add(Component.literal(tmp).withStyle(ChatFormatting.YELLOW));
+        components.add(Component.literal(""));
+        components.add(Component.literal("First Time").withStyle(ChatFormatting.LIGHT_PURPLE));
     }
 }
