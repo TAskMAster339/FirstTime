@@ -1,6 +1,7 @@
 package net.TAskMAster339.firsttime.item;
 
 import net.TAskMAster339.firsttime.FirstTime;
+import net.TAskMAster339.firsttime.item.custom.CustomArmorItem;
 import net.TAskMAster339.firsttime.item.material.CustomTier;
 import net.TAskMAster339.firsttime.item.multitool.MultiToolItem;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -44,14 +45,13 @@ public class ModItems {
 
     //NIGHT_VISION_MASK
     public static final RegistryObject<ArmorItem> NIGHT_VISION_MASK = ITEMS.register("night_vision_mask",
-            () -> new ArmorItem(CustomTier.NIGHT_VISION_MASK, EquipmentSlot.HEAD, tab()));
-
+            () -> new CustomArmorItem(CustomTier.NIGHT_VISION_MASK, EquipmentSlot.HEAD, "Can you see me?", tab()));
     //INVISIBLE_COAT
     public static final RegistryObject<ArmorItem> INVISIBLE_COAT = ITEMS.register("invisible_coat",
-            () -> new ArmorItem(CustomTier.INVISIBLE_COAT, EquipmentSlot.CHEST, tab()));
+            () -> new CustomArmorItem(CustomTier.INVISIBLE_COAT, EquipmentSlot.CHEST, "You're a wizard, Harry",tab()));
     //FAST_BOOTS
     public static final RegistryObject<ArmorItem> FAST_BOOTS = ITEMS.register("fast_boots",
-            () -> new ArmorItem(CustomTier.FAST_BOOTS, EquipmentSlot.FEET, tab()));
+            () -> new CustomArmorItem(CustomTier.FAST_BOOTS, EquipmentSlot.FEET,"I'm travelling at the speed of light", tab()));
     /**
      * shortcut to add item to creative mode tab
      * @return new Item.Properties().tab(ModCreativeModeTab.FIRST_TIME_TAB);
