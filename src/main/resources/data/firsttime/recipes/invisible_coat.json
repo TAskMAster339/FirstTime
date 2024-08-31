@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    "X X"
+  ],
+  "key": {
+    "#": {
+      "item": "firsttime:sapphire"
+    },
+    "X": {
+      "item": "minecraft:sapphire_block"
+    }
+  },
+  "result": {
+    "item": "firsttime:night_vision_mask"
+  }
+}

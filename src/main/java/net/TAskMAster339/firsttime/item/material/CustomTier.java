@@ -33,4 +33,13 @@ public class CustomTier {
                     0.0F,
                     0.0F,
                     () -> { return Ingredient.of(ModItems.SAPPHIRE.get());});
+    public static final MaterialArmor INVISIBLE_COAT =
+            new MaterialArmor("invisible",
+                    5,
+                    new int[]{1, 1, 1, 1},
+                    4,
+                    SoundEvents.ARMOR_EQUIP_TURTLE,
+                    0.0F,
+                    0.0F,
+                    () -> { return Ingredient.of(ModItems.SAPPHIRE.get());});
 }

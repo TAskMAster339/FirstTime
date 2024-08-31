@@ -1,6 +1,7 @@
 package net.TAskMAster339.firsttime.item;
 
 import net.TAskMAster339.firsttime.FirstTime;
+import net.TAskMAster339.firsttime.item.invisible.InvisibleCoat;
 import net.TAskMAster339.firsttime.item.material.CustomTier;
 import net.TAskMAster339.firsttime.item.multitool.MultiToolItem;
 import net.TAskMAster339.firsttime.item.nightglasses.NightVisionMask;
@@ -47,6 +48,9 @@ public class ModItems {
     public static final RegistryObject<NightVisionMask> NIGHT_VISION_MASK = ITEMS.register("night_vision_mask",
             () -> new NightVisionMask(CustomTier.NIGHT_VISION_MASK, tab()));
 
+    //INVISIBLE_COAT
+    public static final RegistryObject<InvisibleCoat> INVISIBLE_COAT = ITEMS.register("invisible_coat",
+            () -> new InvisibleCoat(CustomTier.INVISIBLE_COAT, tab()));
     /**
      * shortcut to add item to creative mode tab
      * @return new Item.Properties().tab(ModCreativeModeTab.FIRST_TIME_TAB);
