@@ -3,6 +3,8 @@ package net.TAskMAster339.firsttime;
 import com.mojang.logging.LogUtils;
 import net.TAskMAster339.firsttime.block.ModBlocks;
 import net.TAskMAster339.firsttime.item.ModItems;
+import net.TAskMAster339.firsttime.world.feature.ModConfiguredFeatures;
+import net.TAskMAster339.firsttime.world.feature.ModPlacedFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,7 +25,12 @@ public class FirstTime {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
+
 
         MinecraftForge.EVENT_BUS.register(this);
     }
