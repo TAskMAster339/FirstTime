@@ -1,10 +1,8 @@
 package net.TAskMAster339.firsttime.item;
 
 import net.TAskMAster339.firsttime.FirstTime;
-import net.TAskMAster339.firsttime.item.invisible.InvisibleCoat;
 import net.TAskMAster339.firsttime.item.material.CustomTier;
 import net.TAskMAster339.firsttime.item.multitool.MultiToolItem;
-import net.TAskMAster339.firsttime.item.nightglasses.NightVisionMask;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -45,12 +43,15 @@ public class ModItems {
             () -> new ArmorItem(CustomTier.SAPPHIRE_ARMOR, EquipmentSlot.FEET, tab()));
 
     //NIGHT_VISION_MASK
-    public static final RegistryObject<NightVisionMask> NIGHT_VISION_MASK = ITEMS.register("night_vision_mask",
-            () -> new NightVisionMask(CustomTier.NIGHT_VISION_MASK, tab()));
+    public static final RegistryObject<ArmorItem> NIGHT_VISION_MASK = ITEMS.register("night_vision_mask",
+            () -> new ArmorItem(CustomTier.NIGHT_VISION_MASK, EquipmentSlot.HEAD, tab()));
 
     //INVISIBLE_COAT
-    public static final RegistryObject<InvisibleCoat> INVISIBLE_COAT = ITEMS.register("invisible_coat",
-            () -> new InvisibleCoat(CustomTier.INVISIBLE_COAT, tab()));
+    public static final RegistryObject<ArmorItem> INVISIBLE_COAT = ITEMS.register("invisible_coat",
+            () -> new ArmorItem(CustomTier.INVISIBLE_COAT, EquipmentSlot.CHEST, tab()));
+    //FAST_BOOTS
+    public static final RegistryObject<ArmorItem> FAST_BOOTS = ITEMS.register("fast_boots",
+            () -> new ArmorItem(CustomTier.FAST_BOOTS, EquipmentSlot.FEET, tab()));
     /**
      * shortcut to add item to creative mode tab
      * @return new Item.Properties().tab(ModCreativeModeTab.FIRST_TIME_TAB);

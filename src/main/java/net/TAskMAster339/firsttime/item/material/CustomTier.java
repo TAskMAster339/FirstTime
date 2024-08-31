@@ -42,4 +42,13 @@ public class CustomTier {
                     0.0F,
                     0.0F,
                     () -> { return Ingredient.of(ModItems.SAPPHIRE.get());});
+    public static final MaterialArmor FAST_BOOTS =
+            new MaterialArmor("fast",
+                    30,
+                    new int[]{3, 1, 1, 1},
+                    40,
+                    SoundEvents.ARMOR_EQUIP_TURTLE,
+                    4.0F,
+                    0.2F,
+                    () -> { return Ingredient.of(ModItems.SAPPHIRE.get());});
 }
