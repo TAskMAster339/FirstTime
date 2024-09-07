@@ -7,10 +7,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.monster.Creeper;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +23,10 @@ public class ModEvents {
     private static int blocksBroken = 0;
     private static final Random random = new Random();
     private static int target = random.nextInt(20, 1000);
+    //thunderEvent
+    private static boolean lastIsThundering = false;
+
+
     @SubscribeEvent
     public static void addEffectsWhenCustomArmorOn(TickEvent.PlayerTickEvent event) {
         String feetName = event.player.getInventory().getArmor(0).getItem().toString();
@@ -52,24 +56,52 @@ public class ModEvents {
             event.player.removeEffect(MobEffects.JUMP);
         }
     }
-        @SubscribeEvent
-        public static void SpawnCreeperWhenBlokeBrakes(BlockEvent.BreakEvent event) {
-            if (!event.getPlayer().level.isClientSide()){
-                blocksBroken++;
-                if (blocksBroken >= target) {
-                    blocksBroken = 0;
-                    target = random.nextInt(20, 1000);
+    @SubscribeEvent
+    public static void spawnCreeperWhenBlokeBrakes(BlockEvent.BreakEvent event) {
+        if (!event.getPlayer().level.isClientSide()){
+            blocksBroken++;
+            if (blocksBroken >= target) {
+                blocksBroken = 0;
+                target = random.nextInt(20, 1000);
 
-                    BlockPos playerPos = event.getPlayer().blockPosition();
-                    ServerLevel world = (ServerLevel) event.getPlayer().level;
+                BlockPos playerPos = event.getPlayer().blockPosition();
+                ServerLevel world = (ServerLevel) event.getPlayer().level;
 
-                    Creeper creeper = new Creeper(EntityType.CREEPER, world);
+                Creeper creeper = new Creeper(EntityType.CREEPER, world);
 
-                    creeper.setPos(playerPos.getX() + random.nextDouble(-3, 3), playerPos.getY() + random.nextDouble(5, 15), playerPos.getZ() + random.nextDouble(-3, 3));
+                creeper.setPos(playerPos.getX() + random.nextDouble(-3, 3), playerPos.getY() + random.nextDouble(5, 15), playerPos.getZ() + random.nextDouble(-3, 3));
 
-                    world.addFreshEntity(creeper);
-                    event.getPlayer().sendSystemMessage(Component.literal("Беригись, Они на деревьях!!!"));
-                }
+                world.addFreshEntity(creeper);
+                event.getPlayer().sendSystemMessage(Component.literal("Беригись, Они на деревьях!!!"));
             }
         }
+    }
+    @SubscribeEvent
+    public static void spawnThunderLighting(TickEvent.LevelTickEvent event) {
+        if (!event.level.isClientSide() && event.level instanceof ServerLevel) {
+            ServerLevel world = (ServerLevel) event.level;
+
+            boolean isThundering = world.isThundering();
+            if (isThundering && !lastIsThundering) {
+                lastIsThundering = true;
+                int extraLightningBolts = 200;
+
+                for (int i = 0; i < extraLightningBolts; i++) {
+                    double x = world.random.nextDouble() * 1000 - 500;
+                    double z = world.random.nextDouble() * 1000 - 500;
+                    double y = world.getHeight(Heightmap.Types.MOTION_BLOCKING, (int) x, (int) z);
+
+                    LightningBolt lightning = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
+                    lightning.setPos(x, y, z);
+
+                    world.addFreshEntity(lightning);
+                }
+            }
+
+            if (!isThundering && lastIsThundering) {
+                lastIsThundering = false;
+            }
+        }
+    }
+
 }
