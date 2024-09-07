@@ -1,5 +1,5 @@
 # TODO
  - [ ] fix recipes (night_vision mask, invisible coat, ...)
- - [ ] fast boots
- - [ ] Ore generation
+ - [ ] Add comms to TreeEvent
+ - [ ] Add more random stuff
  - [ ] 

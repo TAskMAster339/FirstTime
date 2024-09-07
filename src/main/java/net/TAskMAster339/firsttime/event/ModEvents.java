@@ -9,20 +9,32 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.level.NoteBlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid= FirstTime.MOD_ID)
 public class ModEvents {
 
     private static int blocksBroken = 0;
     private static final Random random = new Random();
-    private static int target = random.nextInt(20, 1000);
+    private static int target = 1;
+    private static int range = 1;
     //thunderEvent
     private static boolean lastIsThundering = false;
 
@@ -58,11 +70,12 @@ public class ModEvents {
     }
     @SubscribeEvent
     public static void spawnCreeperWhenBlokeBrakes(BlockEvent.BreakEvent event) {
-        if (!event.getPlayer().level.isClientSide()){
+        if (!event.getPlayer().level.isClientSide()) {
+            event.getPlayer().sendSystemMessage(Component.literal(blocksBroken + " -- " + target));
             blocksBroken++;
             if (blocksBroken >= target) {
                 blocksBroken = 0;
-                target = random.nextInt(20, 1000);
+                target = random.nextInt(1, 10 * range++);
 
                 BlockPos playerPos = event.getPlayer().blockPosition();
                 ServerLevel world = (ServerLevel) event.getPlayer().level;
@@ -75,6 +88,9 @@ public class ModEvents {
                 event.getPlayer().sendSystemMessage(Component.literal("Беригись, Они на деревьях!!!"));
             }
         }
+    }
+    public static void addBrokenBlocksNumber(int num){
+        blocksBroken+=num;
     }
     @SubscribeEvent
     public static void spawnThunderLighting(TickEvent.LevelTickEvent event) {
@@ -102,6 +118,62 @@ public class ModEvents {
                 lastIsThundering = false;
             }
         }
+    }
+    @SubscribeEvent
+    public static void onSomethingBrake(PlayerDestroyItemEvent event) {
+        //give random negative effect.
+    }
+    @SubscribeEvent
+    public static void onHarvest(PlayerEvent.HarvestCheck event) {
+        //
+    }
+    @SubscribeEvent
+    public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+
+    }
+    @SubscribeEvent
+    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+
+    }
+    @SubscribeEvent
+    public static void onRightClickEmptySpace(PlayerInteractEvent.RightClickEmpty event) {
+
+    }
+    @SubscribeEvent
+    public static void whenPlayerSetSpawnPoint(PlayerSetSpawnEvent event) {
+
+    }
+    @SubscribeEvent
+    public static void whenPlayerSleepInBed(PlayerSleepInBedEvent event) {
+
+    }
+    @SubscribeEvent
+    public static void whenPlayerWakeUp(PlayerWakeUpEvent event) {
+
+    }
+    @SubscribeEvent
+    public static void WhenBlockPlaced(BlockEvent.EntityPlaceEvent event) {
+
+    }
+    @SubscribeEvent
+    public static void onNoteBlockClick(NoteBlockEvent.Change event) {
+
+    }
+    @SubscribeEvent
+    public static void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
+
+    }
+    @SubscribeEvent
+    public static void onItemPickedUp(PlayerEvent.ItemPickupEvent event) {
+
+    }
+    @SubscribeEvent
+    public static void onItemSmelted(PlayerEvent.ItemSmeltedEvent event) {
+
+    }
+    @SubscribeEvent
+    public static void whenPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+
     }
 
 }
